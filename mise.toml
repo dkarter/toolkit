@@ -1,0 +1,5 @@
+[tools]
+committed = "latest"
+gitleaks = "latest"
+lefthook = "latest"
+task = "latest"
