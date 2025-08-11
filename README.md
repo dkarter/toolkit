@@ -1,4 +1,4 @@
-# Toolkit
+# 🧰 Toolkit
 
 Toolkit is a template I use for tooling on new projects I spin up. It has some
 basic but very useful tools that help speed up my work and ensure checks are run
