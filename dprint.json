@@ -1,4 +1,7 @@
 {
+  "$schema": "https://dprint.dev/schemas/v0.json",
+  "useTabs": false,
+  "lineWidth": 100,
   "typescript": {
   },
   "json": {
@@ -14,10 +17,15 @@
   "markup": {
   },
   "yaml": {
+    "quotes": "preferSingle"
   },
   "excludes": [
     "**/node_modules",
-    "**/*-lock.json"
+    "**/*-lock.json",
+    "deps/**",
+    "dist/**",
+    "build/**",
+    "_build/**"
   ],
   "plugins": [
     "https://plugins.dprint.dev/typescript-0.95.9.wasm",
