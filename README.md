@@ -12,3 +12,22 @@ before code leaves my dev machine.
 - **[lefthook](https://lefthook.dev)** - Fast Git hooks manager for running checks before commits and pushes
 - **[committed](https://github.com/crate-ci/committed)** - Linter for conventional commit messages
 - **[gitleaks](https://gitleaks.io/)** - Secret scanner to detect hardcoded secrets in Git repositories
+
+## OpenCode Skill
+
+This repo includes a reusable skill for bootstrapping the tooling baseline into other projects:
+
+- Skill directory: `project-tooling-bootstrap/`
+- Packaged artifact: `project-tooling-bootstrap.skill`
+
+Install it to OpenCode with the Vercel Skills CLI:
+
+```bash
+npx skills add ./project-tooling-bootstrap -a opencode
+```
+
+Install globally instead of project-local:
+
+```bash
+npx skills add ./project-tooling-bootstrap -a opencode -g
+```
