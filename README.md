@@ -23,11 +23,11 @@ This repo includes a reusable skill for bootstrapping the tooling baseline into 
 Install it to OpenCode with the Vercel Skills CLI:
 
 ```bash
-npx skills add ./project-tooling-bootstrap -a opencode
+bunx skills add ./project-tooling-bootstrap -a opencode
 ```
 
 Install globally instead of project-local:
 
 ```bash
-npx skills add ./project-tooling-bootstrap -a opencode -g
+bunx skills add ./project-tooling-bootstrap -a opencode -g
 ```
