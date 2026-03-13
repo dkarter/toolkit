@@ -14,10 +14,11 @@ Use these defaults as a baseline, then tune by project needs.
 - Keep keychain fallback for `OP_SERVICE_ACCOUNT_TOKEN` for local development.
 - Commit only provider and key mappings, never secret values.
 
-## `Taskfile.yml` and `taskfiles/ci.yml`
+## Mise built-in tasks
 
-- Add language-specific tasks (`test`, `lint`, `typecheck`) in `Taskfile.yml`.
-- Keep `ci:fmt:check` lightweight and deterministic.
+- Add language-specific tasks (`test`, `lint`, `typecheck`) under `[tasks.*]` in `mise.toml`.
+- Keep `fmt-check` lightweight and deterministic.
+- For app commands that need secrets, prefer `fnox run -- <command>` inside task `run` entries.
 
 ## `dprint.json`
 
