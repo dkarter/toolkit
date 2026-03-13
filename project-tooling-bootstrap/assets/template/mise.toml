@@ -1,8 +1,10 @@
 [tools]
 "github:crate-ci/committed" = "latest"
 dprint = "latest"
+fnox = "latest"
 gitleaks = "latest"
 lefthook = "latest"
+pitchfork = "latest"
 task = "latest"
 
 [hooks]

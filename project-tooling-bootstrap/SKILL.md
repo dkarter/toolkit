@@ -1,6 +1,6 @@
 ---
 name: project-tooling-bootstrap
-description: "Bootstrap a repository with the Toolkit baseline developer tooling: mise, Task, dprint, lefthook, committed, and gitleaks. Use when a user asks to add or standardize local tooling, Git hooks, formatting checks, or commit-message linting in a new or existing project. Applies to polyglot repos that need repeatable local setup and pre-push quality checks."
+description: "Bootstrap a repository with the Toolkit baseline developer tooling: mise, Task, dprint, lefthook, committed, gitleaks, pitchfork, and fnox. Use when a user asks to add or standardize local tooling, Git hooks, formatting checks, commit-message linting, local command orchestration, or secrets handling in a new or existing project. Applies to polyglot repos that need repeatable local setup and pre-push quality checks."
 ---
 
 # Project Tooling Bootstrap
@@ -13,6 +13,34 @@ Apply a ready-made tooling baseline to a target project using the templates in `
 2. Apply templates with `scripts/install_toolkit.sh`.
 3. Install tools and hooks in the target repository.
 4. Run formatting and checks to verify setup.
+
+## Tool Application Rules
+
+Use these defaults when applying the baseline in a target repository:
+
+- Keep `pitchfork` available for local command orchestration. See `https://pitchfork.jdx.dev`.
+- Keep `fnox` available for secrets handling and secret-backed command execution.
+- Install `fnox.toml` at the repository root unless the project already has a standardized secrets config.
+- Default `fnox.toml` provider should be `onepass` (1Password) with keychain fallback for local token storage.
+
+When wiring commands/tasks:
+
+- Wrap commands that need credentials with `fnox run -- <command>`.
+- Use `pitchfork` for multi-command local workflows when orchestration is needed, and keep direct one-off commands in `Taskfile.yml`.
+- Never commit secret values. Commit `fnox.toml` templates and keys only.
+
+Default `fnox.toml` template:
+
+```toml
+default_provider = "onepass"
+
+[providers]
+onepass = { type = "1password", vault = "fnox" }
+keychain = { type = "keychain", service = "fnox" }
+
+[secrets]
+OP_SERVICE_ACCOUNT_TOKEN = { provider = "keychain", value = "OP_SERVICE_ACCOUNT_TOKEN" }
+```
 
 ## Quick Start
 
@@ -58,6 +86,7 @@ Core files copied to the target repository:
 - `dprint.json`
 - `lefthook.yml`
 - `committed.toml`
+- `fnox.toml`
 
 Optional file:
 
@@ -75,6 +104,8 @@ task ci:fmt:check
 ```
 
 If commits should be conventionally linted, verify `committed` runs via a test commit message or existing commit hook flow.
+
+For local orchestration and secrets handling, verify `pitchfork` and `fnox` are installed after `mise install`.
 
 ## Idempotence Checks
 

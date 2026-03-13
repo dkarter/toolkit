@@ -86,6 +86,7 @@ copy_template "taskfiles/ci.yml"
 copy_template "dprint.json"
 copy_template "lefthook.yml"
 copy_template "committed.toml"
+copy_template "fnox.toml"
 
 if [[ "$WITH_RENOVATE" == "true" ]]; then
   copy_template "renovate.json"
