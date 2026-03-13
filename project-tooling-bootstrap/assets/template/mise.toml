@@ -1,6 +1,9 @@
 [tools]
-committed = "latest"
+"github:crate-ci/committed" = "latest"
 dprint = "latest"
 gitleaks = "latest"
 lefthook = "latest"
 task = "latest"
+
+[hooks]
+postinstall = "lefthook install"
